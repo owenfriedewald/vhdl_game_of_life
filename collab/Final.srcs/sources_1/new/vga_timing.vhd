@@ -68,7 +68,7 @@ begin
     ----------------------------------------------------------------
     -- Pixel Coordinates
     ----------------------------------------------------------------
-    x <= h_count - 144;
-    y <= v_count - 35;
+    x <= h_count when h_count < H_VISIBLE else 0;
+    y <= v_count when v_count < V_VISIBLE else 0;
     
 end Behavioral;
