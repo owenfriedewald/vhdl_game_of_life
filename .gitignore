@@ -4,7 +4,7 @@ work-obj*.cf
 *.vcd
 
 # Local notes / scratch documentation
-*.md
+docs/
 
 # Local assistant/tool metadata
 .codex
@@ -15,8 +15,7 @@ work-obj*.cf
 .copilot*
 
 # Downloaded reference-page bundles
-Nexys 3 Reference Manual - Digilent Reference.html
-Nexys 3 Reference Manual - Digilent Reference_files/
+collab/
 
 # Vivado generated project/run output
 .Xil/
