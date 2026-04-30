@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- Optional adapter for an existing VGA renderer.
+-- Game of Life color-pattern block for a VGA renderer.
 --
 -- This module is intentionally shaped like a color-pattern block. It does not
 -- generate VGA timing or sync. Feed it the current pixel x/y and video_on from
