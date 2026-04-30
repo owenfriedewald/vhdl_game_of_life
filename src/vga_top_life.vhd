@@ -9,7 +9,6 @@ entity vga_top_life is
     port (
         CLK100MHZ : in  std_logic;
         SW        : in  std_logic_vector(5 downto 0);
-        BTNC      : in  std_logic;
         VGA_HS    : out std_logic;
         VGA_VS    : out std_logic;
         VGA_R     : out std_logic_vector(3 downto 0);
@@ -30,6 +29,20 @@ begin
             clkOut => clk_25mhz
         );
 
+    process(CLK100MHZ)
+    begin
+        if rising_edge(CLK100MHZ) then
+            reset_meta <= SW(3);
+            reset_clean <= reset_meta;
+
+            speed_meta <= SW (2 downto 0);
+            speed_clean <= speed_meta
+
+            seed_meta <= SW(5 downto 4);
+            seed_clean <= seed_meta;
+        end if;
+    end process;
+
     timing_inst : entity work.vga_timing
         port map (
             clk      => clk_25mhz,
@@ -43,10 +56,9 @@ begin
     life_pattern_inst : entity work.life_vga_pattern
         port map (
             clk100       => CLK100MHZ,
-            reset        => BTNC,
-            pause        => SW(3),
-            speed_select => SW(2 downto 0),
-            seed_select  => SW(5 downto 4),
+            reset        => reset_clean,
+            speed_select => speed_clean,
+            seed_select  => seed_clean,
             x            => x,
             y            => y,
             video_on     => video_on,

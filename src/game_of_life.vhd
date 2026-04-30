@@ -12,7 +12,6 @@ entity game_of_life is
         clk         : in  std_logic;
         reset       : in  std_logic;
         update_tick : in  std_logic;
-        pause       : in  std_logic;
         seed_select : in  unsigned(1 downto 0);
         cell_x      : in  unsigned(5 downto 0); -- 0 to 39 used
         cell_y      : in  unsigned(4 downto 0); -- 0 to 29 used
@@ -171,7 +170,7 @@ begin
         if rising_edge(clk) then
             if reset = '1' then
                 current_grid <= seed_grid(seed_select);
-            elsif update_tick = '1' and pause = '0' then
+            elsif update_tick = '1' then
                 next_grid := (others => (others => '0'));
 
                 for y in 0 to GRID_ROWS - 1 loop

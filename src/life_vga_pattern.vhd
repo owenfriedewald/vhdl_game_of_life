@@ -12,7 +12,6 @@ entity life_vga_pattern is
     port (
         clk100       : in  std_logic;
         reset        : in  std_logic;
-        pause        : in  std_logic;
         speed_select : in  std_logic_vector(2 downto 0);
         seed_select  : in  std_logic_vector(1 downto 0);
         x            : in  integer;
@@ -44,7 +43,6 @@ begin
             clk         => clk100,
             reset       => reset,
             update_tick => update_tick,
-            pause       => pause,
             seed_select => unsigned(seed_select),
             cell_x      => cell_x,
             cell_y      => cell_y,

@@ -34,9 +34,8 @@ Required constraints:
 
 ## Board Controls
 
-- `BTNC` resets the Game of Life grid and reloads the selected seed.
 - `SW[2:0]` selects update speed.
-- `SW[3]` pauses the simulation.
+- `SW[3]` resets the Game of Life grid and reloads the selected seed.
 - `SW[5:4]` selects the seed pattern.
 
 Seed selection:
@@ -48,45 +47,4 @@ Seed selection:
 
 ## Simulation
 
-The design was checked with GHDL using VHDL-2008. The existing `clock_gen.vhd`
-uses older Synopsys arithmetic packages, so top-level elaboration uses
-`-fsynopsys`.
-
-Analyze and run the semantic tests:
-
-```bash
-ghdl -a --std=08 src/game_of_life.vhd
-ghdl -a --std=08 src/tick_generator.vhd
-ghdl -a --std=08 src/life_vga_pattern.vhd
-ghdl -a --std=08 src/vga_timing.vhd
-
-ghdl -a --std=08 sim/tb_game_of_life.vhd
-ghdl -e --std=08 tb_game_of_life
-ghdl -r --std=08 tb_game_of_life --assert-level=error
-
-ghdl -a --std=08 sim/tb_life_vga_pattern.vhd
-ghdl -e --std=08 tb_life_vga_pattern
-ghdl -r --std=08 tb_life_vga_pattern --assert-level=error
-
-ghdl -a --std=08 sim/tb_vga_timing.vhd
-ghdl -e --std=08 tb_vga_timing
-ghdl -r --std=08 tb_vga_timing --assert-level=error
-```
-
-Top-level elaboration check from the project root:
-
-```bash
-ghdl -a --std=08 src/game_of_life.vhd
-ghdl -a --std=08 src/tick_generator.vhd
-ghdl -a --std=08 src/life_vga_pattern.vhd
-ghdl -a --std=08 src/vga_timing.vhd
-ghdl -a --std=08 -fsynopsys src/clock_gen.vhd
-ghdl -a --std=08 -fsynopsys src/vga_top_life.vhd
-ghdl -e --std=08 -fsynopsys vga_top_life
-```
-
-## Vivado Notes
-
-In Vivado, add the VHDL files from `src/`, add both XDC files from
-`constraints/`, and set `vga_top_life` as the top module. The old grid-only VGA
-files are kept under `legacy/` for reference.
+The design was checked end-to-end with synthesis, implementation, bitstream, and FPGA output onto a VGA using a VGA to HDMI adapter on a monitor in the lab.
