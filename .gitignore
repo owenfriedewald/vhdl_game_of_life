@@ -1,0 +1,33 @@
+# GHDL generated library files
+work-obj*.cf
+*.ghw
+*.vcd
+
+# Vivado generated project/run output
+.Xil/
+*.jou
+*.log
+*.str
+*.backup.jou
+*.backup.log
+*.runs/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.srcs/sources_1/bd/*/ip/
+
+# Vivado generated reports and implementation products
+*.bit
+*.bin
+*.ltx
+*.dcp
+*.rpt
+*.wdb
+
+# Editor/OS clutter
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
