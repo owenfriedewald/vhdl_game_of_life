@@ -22,6 +22,13 @@ architecture rtl of vga_top_life is
     signal x         : integer range 0 to 639;
     signal y         : integer range 0 to 479;
     signal video_on  : std_logic;
+
+    signal reset_meta  : std_logic := '0';
+    signal reset_clean : std_logic := '0';
+    signal speed_meta  : std_logic_vector(2 downto 0) := (others => '0');
+    signal speed_clean : std_logic_vector(2 downto 0) := (others => '0');
+    signal seed_meta   : std_logic_vector(1 downto 0) := (others => '0');
+    signal seed_clean  : std_logic_vector(1 downto 0) := (others => '0');
 begin
     clock_inst : entity work.clock_gen
         port map (
@@ -35,8 +42,8 @@ begin
             reset_meta <= SW(3);
             reset_clean <= reset_meta;
 
-            speed_meta <= SW (2 downto 0);
-            speed_clean <= speed_meta
+            speed_meta <= SW(2 downto 0);
+            speed_clean <= speed_meta;
 
             seed_meta <= SW(5 downto 4);
             seed_clean <= seed_meta;

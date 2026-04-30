@@ -10,7 +10,6 @@ architecture sim of tb_game_of_life is
     signal clk         : std_logic := '0';
     signal reset       : std_logic := '0';
     signal update_tick : std_logic := '0';
-    signal pause       : std_logic := '0';
     signal seed_select : unsigned(1 downto 0) := (others => '0');
     signal cell_x      : unsigned(5 downto 0) := (others => '0');
     signal cell_y      : unsigned(4 downto 0) := (others => '0');
@@ -23,7 +22,6 @@ begin
             clk         => clk,
             reset       => reset,
             update_tick => update_tick,
-            pause       => pause,
             seed_select => seed_select,
             cell_x      => cell_x,
             cell_y      => cell_y,
@@ -85,16 +83,6 @@ begin
         check_cell(40, 0, '0', "out-of-range x coordinate should read dead");
         check_cell(0, 30, '0', "out-of-range y coordinate should read dead");
 
-        pause <= '1';
-        update_tick <= '1';
-        wait until rising_edge(clk);
-        update_tick <= '0';
-        wait for 1 ns;
-
-        check_cell(19, 13, '1', "paused blinker upper cell should stay alive");
-        check_cell(19, 15, '1', "paused blinker lower cell should stay alive");
-
-        pause <= '0';
         seed_select <= "01";
         reset <= '1';
         wait until rising_edge(clk);

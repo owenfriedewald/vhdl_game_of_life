@@ -9,7 +9,6 @@ end tb_life_vga_pattern;
 architecture sim of tb_life_vga_pattern is
     signal clk100       : std_logic := '0';
     signal reset        : std_logic := '0';
-    signal pause        : std_logic := '1';
     signal speed_select : std_logic_vector(2 downto 0) := (others => '0');
     signal seed_select  : std_logic_vector(1 downto 0) := (others => '0');
     signal x            : integer := 0;
@@ -25,7 +24,6 @@ begin
         port map (
             clk100       => clk100,
             reset        => reset,
-            pause        => pause,
             speed_select => speed_select,
             seed_select  => seed_select,
             x            => x,
