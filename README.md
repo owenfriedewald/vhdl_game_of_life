@@ -4,11 +4,7 @@ VHDL implementation of Conway's Game of Life for the Digilent Nexys 4 DDR board
 with a Xilinx Artix-7 FPGA. The design uses an existing 640x480 VGA timing path
 and renders a 40 by 30 Life grid with 16 by 16 pixel cells.
 
-Authors:
-
-1. Owen Friedewald
-2. Thomas Joswiak
-3. Silas Barton
+Authors: Owen Friedewald, Thomas Joswiak, Silas Barton
 
 ## Project Layout
 
