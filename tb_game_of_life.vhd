@@ -68,6 +68,23 @@ begin
         check_cell(19, 15, '1', "updated blinker lower cell should be alive");
         check_cell(20, 14, '0', "updated blinker right cell should be dead");
 
+        check_cell(3, 2, '0', "updated glider old head should be dead");
+        check_cell(2, 3, '1', "updated glider new left cell should be alive");
+        check_cell(4, 3, '1', "updated glider right cell should stay alive");
+        check_cell(3, 4, '1', "updated glider lower-left cell should stay alive");
+        check_cell(4, 4, '1', "updated glider lower-right cell should stay alive");
+        check_cell(3, 5, '1', "updated glider new lower cell should be alive");
+
+        check_cell(30, 22, '1', "block still life upper-left should stay alive");
+        check_cell(31, 22, '1', "block still life upper-right should stay alive");
+        check_cell(30, 23, '1', "block still life lower-left should stay alive");
+        check_cell(31, 23, '1', "block still life lower-right should stay alive");
+        check_cell(29, 22, '0', "block still life left neighbor should stay dead");
+        check_cell(32, 23, '0', "block still life right neighbor should stay dead");
+
+        check_cell(40, 0, '0', "out-of-range x coordinate should read dead");
+        check_cell(0, 30, '0', "out-of-range y coordinate should read dead");
+
         pause <= '1';
         update_tick <= '1';
         wait until rising_edge(clk);
