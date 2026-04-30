@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 -- This is an integration sketch, not a complete Nexys 4 DDR top level.
--- Rename the VGA timing/color signals to match your collaborator's module.
+-- Rename the VGA timing/color signals to match the final top-level design.
 entity gol_vga_integration_example is
     port (
         clk100       : in  std_logic;
