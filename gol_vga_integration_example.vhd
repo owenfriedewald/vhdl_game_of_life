@@ -49,6 +49,7 @@ begin
             reset       => reset,
             update_tick => update_tick,
             pause       => pause,
+            seed_select => "00",
             cell_x      => cell_x,
             cell_y      => cell_y,
             cell_alive  => cell_alive

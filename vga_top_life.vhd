@@ -8,7 +8,7 @@ use IEEE.numeric_std.all;
 entity vga_top_life is
     port (
         CLK100MHZ : in  std_logic;
-        SW        : in  std_logic_vector(3 downto 0);
+        SW        : in  std_logic_vector(5 downto 0);
         BTNC      : in  std_logic;
         VGA_HS    : out std_logic;
         VGA_VS    : out std_logic;
@@ -46,6 +46,7 @@ begin
             reset        => BTNC,
             pause        => SW(3),
             speed_select => SW(2 downto 0),
+            seed_select  => SW(5 downto 4),
             x            => x,
             y            => y,
             video_on     => video_on,

@@ -47,6 +47,7 @@ begin
             reset        => Ci,
             pause        => A(3),
             speed_select => A(2 downto 0),
+            seed_select  => "00",
             x            => x,
             y            => y,
             video_on     => video_on,

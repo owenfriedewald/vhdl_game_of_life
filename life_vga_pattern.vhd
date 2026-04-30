@@ -14,6 +14,7 @@ entity life_vga_pattern is
         reset        : in  std_logic;
         pause        : in  std_logic;
         speed_select : in  std_logic_vector(2 downto 0);
+        seed_select  : in  std_logic_vector(1 downto 0);
         x            : in  integer;
         y            : in  integer;
         video_on     : in  std_logic;
@@ -44,6 +45,7 @@ begin
             reset       => reset,
             update_tick => update_tick,
             pause       => pause,
+            seed_select => unsigned(seed_select),
             cell_x      => cell_x,
             cell_y      => cell_y,
             cell_alive  => cell_alive
