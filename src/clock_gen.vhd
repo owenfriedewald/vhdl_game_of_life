@@ -13,8 +13,7 @@ end clock_gen;
 architecture Behavior of clock_gen is 
 	signal count : unsigned(1 downto 0) := "00";
 begin
-	-- Given: generate clock1 from the 100 MHz board clock
-	-- Turns it into 25MHz
+	-- Divide the 100 MHz board clock down to a 25 MHz VGA pixel clock.
 	process(clkIn)
 	begin
 		if rising_edge(clkIn) then	

@@ -39,6 +39,8 @@ begin
     process(CLK100MHZ)
     begin
         if rising_edge(CLK100MHZ) then
+            -- Synchronize board switches into the 100 MHz logic domain before
+            -- using them as control inputs.
             reset_meta <= SW(3);
             reset_clean <= reset_meta;
 

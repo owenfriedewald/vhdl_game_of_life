@@ -30,7 +30,7 @@ architecture rtl of game_of_life is
     begin
         case to_integer(selected_seed) is
             when 0 =>
-                -- Mixed demo: glider, blinker, block, and a small ship.
+                -- Seed 0: mixed demo with a few recognizable Life patterns.
                 seed(2, 3) := '1';
                 seed(3, 4) := '1';
                 seed(4, 2) := '1';
@@ -57,7 +57,7 @@ architecture rtl of game_of_life is
                 seed(11, 31) := '1';
 
             when 1 =>
-                -- Oscillator demo: several blinkers and toads.
+                -- Seed 1: oscillator-heavy pattern.
                 seed(5, 8) := '1';
                 seed(5, 9) := '1';
                 seed(5, 10) := '1';
@@ -81,8 +81,7 @@ architecture rtl of game_of_life is
                 seed(24, 6) := '1';
 
             when 2 =>
-                -- Random-looking fixed soup. Deterministic reset keeps demos
-                -- and debugging repeatable.
+                -- Seed 2: fixed soup pattern, deterministic for repeatable demos.
                 seed(3, 6) := '1';
                 seed(3, 7) := '1';
                 seed(3, 12) := '1';
@@ -132,7 +131,7 @@ architecture rtl of game_of_life is
                 seed(26, 33) := '1';
 
             when others =>
-                -- Multiple gliders aimed across the board.
+                -- Seed 3: several gliders placed around the board.
                 seed(2, 3) := '1';
                 seed(3, 4) := '1';
                 seed(4, 2) := '1';
@@ -169,6 +168,7 @@ begin
     begin
         if rising_edge(clk) then
             if reset = '1' then
+                -- Seed selection is sampled when reset is asserted.
                 current_grid <= seed_grid(seed_select);
             elsif update_tick = '1' then
                 next_grid := (others => (others => '0'));

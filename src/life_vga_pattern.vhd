@@ -2,12 +2,10 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- Game of Life color-pattern block for a VGA renderer.
+-- Game of Life color-pattern block for the VGA output.
 --
--- This module is intentionally shaped like a color-pattern block. It does not
--- generate VGA timing or sync. Feed it the current pixel x/y and video_on from
--- the existing VGA timing module, and it returns RGB values based on the Game
--- of Life state.
+-- This module does not generate sync signals; it only converts the current
+-- visible pixel coordinate into a cell lookup and RGB color.
 entity life_vga_pattern is
     port (
         clk100       : in  std_logic;
@@ -56,6 +54,7 @@ begin
         grid_line <= '0';
 
         if video_on = '1' and x >= 0 and x < 640 and y >= 0 and y < 480 then
+            -- 16 pixels per cell, so division by 16 maps 640x480 to 40x30.
             cell_x <= to_unsigned(x / 16, cell_x'length);
             cell_y <= to_unsigned(y / 16, cell_y'length);
 

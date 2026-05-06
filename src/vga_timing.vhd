@@ -68,6 +68,8 @@ begin
     ----------------------------------------------------------------
     -- Pixel Coordinates
     ----------------------------------------------------------------
+    -- x and y are only active-area coordinates. During blanking they are held
+    -- at 0 so downstream drawing logic never sees porch/sync coordinates.
     x <= h_count when h_count < H_VISIBLE else 0;
     y <= v_count when v_count < V_VISIBLE else 0;
     
