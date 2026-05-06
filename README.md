@@ -82,7 +82,7 @@ Expected output after programming:
 
 ## Simulation
 
-The design was also checked with GHDL. Simulation is not required to run the
+The design was also checked with testbenches. Simulation is not required to run the
 project on the board, but the testbenches are included to verify the main logic
 without rebuilding a bitstream.
 
